@@ -25,3 +25,15 @@ Time spent:  12 hours spent in total
 - [] (optional) Support conflict resolution (Optional) (Not completed)
 - [x] Add CLI 
 
+
+#How to Use. 
+1. git clone
+2. cd DrobBoxNodejs
+3. cd server, nmp install - This will run the server. 
+4. open antoher teriminal. curl -v http://localhost:8000/index.js -X GET (it has support for GET, PUT, POST, HEAD and DELETE)
+5. For TCP. Open another termial. cd to dropBoxNode.js, cd client. 
+6. Run client: bode client.js
+7. The client will get updates by the server when any files are created, updated or deleted. 
+
+Known issue.
+1. In the client.js filepath is not being sent to the delete and update methods. Create works well. 
