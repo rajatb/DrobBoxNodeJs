@@ -10,18 +10,18 @@ Time spent:  12 hours spent in total
 - [x] Setup an HTTP server listening on port 8000.
 - [x] Implement an HTTP route for FILES for GET, HEAD, PUT, POST, DELETE
 - [x] Implement an HTTP route for DIR for GET, HEAD, PUT, POST, DELETE
-- []  (Optional) Use HTTPS by defulat, and redirect from HTTP (Not completed)
+- []  (Optional) Use HTTPS by defulat, and redirect from HTTP (Optional) (Not completed)
 - [x] CLI support added. (bode index.js --dir /some/root/dir)
 - [x] Add TCP support. PUT, POST and DELETE update to connected clients is done using json. (json-socket used)
 - [x] It watches for changes in the root folder and sends update to the clients using Chokidar.
-- [] (Optional) Create, delete or update files when the corresponding packets are received from clients
-- [](optional) Add FTP support so that an FTP client can be used to access the files
+- [] (Optional) Create, delete or update files when the corresponding packets are received from clients (Optional)(Not completed)
+- [](optional) Add FTP support so that an FTP client can be used to access the files (Optional)(Not completed)
  
   Client:
 - [x] Use CWD as the root 
 - [x] Connect to the server using TCP
 - [x] Create, delete or update the contents of files when the corresponding packets are received from the server
-- [] (optional) Watch the CWD for file changes with 
-- [] (optional) Support conflict resolution
+- [] (optional) Watch the CWD for file changes with (Optional) (Not completed)
+- [] (optional) Support conflict resolution (Optional) (Not completed)
 - [x] Add CLI 
 
