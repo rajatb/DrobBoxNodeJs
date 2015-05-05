@@ -23,14 +23,6 @@ let ROOT_DIR = argv.dir ? path.resolve(argv.dir) :  path.resolve(process.cwd())
 console.log(`Root Dir: ${ROOT_DIR}`)
 
 let app = express()
-// let watcher = chokidar.watch('.', {ignored: 'node_modules'})
-
-// watcher.on('all', (event, path, stat) => {
-//   console.log(event, path);
-//   if (event === 'change') {
-//     console.log(event);
-//   }
-// });
 
 if (NODE_ENV === 'development'){
 	app.use(morgan('dev'))
@@ -40,11 +32,11 @@ app.listen(PORT, ()=> console.log(`Listening @127.0.0.1:${PORT}`))
 
 app.get('*', setFileMeta,sendHeaders, (req, res) => {
 	
-
 	if(res.body){
 		res.json(res.body)
 		return
 	}
+	
 	
 	fs.createReadStream(req.filepath).pipe(res)
 })
@@ -168,29 +160,29 @@ server.on('connection', function(socket) {
     	let filepathClient = ""
 		watcher.on('all', (event, path, stat) => {
 			filepathClient = path
-  		console.log("Event: "+ event + " Path: " +path);
-  		if (event === 'change') {
-    		action = 'update'
-    		type= 'file'
-    		content = fs.readFileSync(path, 'utf8')
- 
-  		}
-  		if (event === 'add' || event === 'addDir') {
-  			let isDir = event ==='addDir'
-  			action = 'create'
-    		content = isDir ? null : fs.readFileSync(path, 'utf8')
-    		type = isDir ? 'dir' : 'file'
+  			console.log("Event: "+ event + " Path: " +path);
+	  		if (event === 'change') {
+	    		action = 'update'
+	    		type= 'file'
+	    		content = fs.readFileSync(path, 'utf8')
+	 
+	  		}
+	  		if (event === 'add' || event === 'addDir') {
+	  			let isDir = event ==='addDir'
+	  			action = 'create'
+	    		content = isDir ? null : fs.readFileSync(path, 'utf8')
+	    		type = isDir ? 'dir' : 'file'
 
-    	}
-    	if(event === 'unlink' || event === 'unlinkDir'){
-    		action = 'delete'
-    		content = null
-    		type = event === 'unlinkDir' ? 'dir' : 'file'
-    	}
+	    	}
+	    	if(event === 'unlink' || event === 'unlinkDir'){
+	    		action = 'delete'
+	    		content = null
+	    		type = event === 'unlinkDir' ? 'dir' : 'file'
+	    	}
 
 			
 
-    	  //Will happen with connection is established. 
+    	    //Will happen with connection is established. 
 			    socket.sendMessage({
 			    	"action": action,                        // create "update" or "delete"
 			    	"path": filepathClient,
