@@ -36,7 +36,8 @@ Time spent:  12 hours spent in total
 7. The client will get updates by the server when any files are created, updated or deleted. 
 
 Known issue.
-1. In the client.js filepath is not being sent to the delete and update methods. Create works well. 
+1. In the client.js filepath is not being sent to the delete and update methods. Create works well.
+2. Express server on GET of file, gives me this error. Excess found in a non pipelined read: excess = 14 url = /test.txt (zero-length body)
 
 
 TCP SERVER
