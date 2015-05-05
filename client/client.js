@@ -24,12 +24,10 @@ socket.on('connect', function() { //Don't send until we're connected
     socket.on('message', function(json) {
        async()=>{
         let action = json.action
-        let filePath = ""
         
         filePath = path.join(ROOT_DIR,json.path)
         console.log("filepath:"+ filePath)
-        console.log(e.stack)
-        }
+       
         
        let isDir = json.type === 'dir' ? true : false
        let dirPath =  isDir ? filePath : path.dirname(filePath)

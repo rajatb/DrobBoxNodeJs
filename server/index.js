@@ -37,8 +37,12 @@ app.get('*', setFileMeta,sendHeaders, (req, res) => {
 		return
 	}
 	
+	try{
+		fs.createReadStream(req.filepath).pipe(res)
+	} catch(e){
+		console.log(e.stack + " : "+e.message)
+	}
 	
-	fs.createReadStream(req.filepath).pipe(res)
 })
 
 app.head('*', setFileMeta,sendHeaders,(req, res)=> res.end())
